@@ -24,35 +24,66 @@ public class Movie implements Serializable {
     public Movie() {
     }
 
-    public Long getMovieId() {
-        return movieId;
+    public Movie(Builder builder){
+        this.image = builder.image;
+        this.title = builder.title;
+        this.year = builder.year;
     }
 
-    public void setMovieId(Long movieId) {
-        this.movieId = movieId;
+    public Long getMovieId() {
+        return movieId;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public String getImage() {
         return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
     }
 
     public Integer getYear() {
         return year;
     }
 
-    public void setYear(Integer year) {
-        this.year = year;
+    public static final class Builder {
+        private Long movieId;
+        private String title;
+        private String image;
+        private Integer year;
+
+        public Builder() {
+        }
+
+        public Builder(Movie copy) {
+            this.title = copy.getTitle();
+            this.image = copy.getImage();
+            this.year = copy.getYear();
+            this.movieId = copy.getMovieId();
+        }
+
+        public Movie.Builder title(String title) {
+            this.title = title;
+            return this;
+        }
+
+        public Movie.Builder image(String image) {
+            this.image = image;
+            return this;
+        }
+
+        public Movie.Builder year(Integer year) {
+            this.year = year;
+            return this;
+        }
+
+        public Movie.Builder id(Long id) {
+            this.movieId = id;
+            return this;
+        }
+
+        public Movie build() {
+            return new Movie(this);
+        }
     }
 }
