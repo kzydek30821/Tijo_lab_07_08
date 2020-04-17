@@ -1,6 +1,15 @@
 package pl.edu.pwsztar.domain.dto;
 
-public class FileDto {
+import java.util.List;
 
-    //TODO: potrzebujemy pola i metody
+public class FileDto {
+    private List<MovieDto> moveList;
+
+    public FileDto(List<MovieDto> moveList) {
+        this.moveList = moveList;
+    }
+
+    public List<MovieDto> getMoveList() {
+        return moveList;
+    }
 }
